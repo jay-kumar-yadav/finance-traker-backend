@@ -7,10 +7,15 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Use frontend URL based on environment
+const FRONTEND_URL = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:5173' // Local frontend during development
+  : 'https://finance-traker-one.vercel.app'; // Deployed frontend in production
+
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:5173', // Your frontend URL
-  credentials: true
+  origin: FRONTEND_URL,
+  credentials: true,
 }));
 
 // Middleware
@@ -35,4 +40,5 @@ app.get('/', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log(`CORS enabled for: ${FRONTEND_URL}`);
 });
