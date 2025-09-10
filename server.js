@@ -10,8 +10,9 @@ const PORT = process.env.PORT || 5000;
 
 // Use frontend URL based on environment
 const FRONTEND_URL = process.env.NODE_ENV === 'development'
-  ? 'http://localhost:5173' // Local frontend during development
-  : 'https://finance-traker-git-main-jay-kumar-yadavs-projects-8d4c55af.vercel.app/'; // Deployed frontend in production
+  ? 'http://localhost:5173'
+  : 'https://finance-traker-git-main-jay-kumar-yadavs-projects-8d4c55af.vercel.app';
+
 
 // CORS configuration
 app.use(cors({
